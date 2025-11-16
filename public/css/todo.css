@@ -1,0 +1,146 @@
+/* ===== Base ===== */
+body {
+  background: #f8fafc;
+  font-family: "Poppins", sans-serif;
+  color: #1e293b;
+  min-height: 100vh;
+}
+
+/* ===== Header ===== */
+.board-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.board-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  padding: 10px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* ===== Board Layout ===== */
+.kanban-board {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+/* ===== Columns ===== */
+.kanban-column {
+  background: #f1f5f9;
+  border-radius: 16px;
+  padding: 20px;
+  width: 270px;
+  min-height: 500px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.kanban-header {
+  text-align: center;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 15px;
+}
+
+/* ===== Cards ===== */
+.kanban-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+}
+
+.kanban-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Priority color accents */
+.priority-high { border-left: 5px solid #ef4444; background-color: #fee2e2; }
+.priority-medium { border-left: 5px solid #facc15; background-color: #fef9c3; }
+.priority-low { border-left: 5px solid #22c55e; background-color: #dcfce7; }
+
+/* ===== Task Info (no labels) ===== */
+.task-info {
+  margin-bottom: 15px;
+}
+
+.task-value {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+/* ===== Buttons beside each other ===== */
+.task-btns {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.task-btns .btn {
+  border-radius: 8px;
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  transition: 0.2s ease;
+}
+
+.edit-btn {
+  border-color: #6c757d;
+  color: #333;
+}
+
+.edit-btn:hover {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.delete-btn {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.delete-btn:hover {
+  background-color: #ef4444;
+  color: #fff;
+}
+
+/* ===== Modal ===== */
+.modal-content {
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-footer .btn-success {
+  background-color: #16a34a;
+  border: none;
+}
+
+.modal-footer .btn-success:hover {
+  background-color: #15803d;
+}
+
+.modal-footer .btn-secondary {
+  background-color: #475569;
+  border: none;
+}
+
+.modal-footer .btn-secondary:hover {
+  background-color: #334155;
+}
