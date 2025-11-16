@@ -153,17 +153,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 const taskId = card.getAttribute('data-task-id');
                 const newCategory = column.querySelector('.kanban-header').textContent.trim();
 
-                fetch(`/tasks/${taskId}`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    },
-                    body: JSON.stringify({ category: newCategory })
-                })
-                .then(res => res.json())
-                .then(data => console.log('Updated:', data))
-                .catch(err => console.error('Error:', err));
+                fetch(`/tasks/${taskId}/category`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
+                body: JSON.stringify({ category: newCategory })
+            })
+            .then(res => res.json())
+            .then(data => console.log('Category updated:', data))
+            .catch(err => console.error('Error:', err));
+
             }
         });
     });
