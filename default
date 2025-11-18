@@ -7,14 +7,14 @@ server {
     root /home/site/wwwroot/public;
     index index.php index.html index.htm;
 
-    # Fix: correct domain directive
-    servername ;
+    # Correct directive name and value
+    server_name _;
 
     port_in_redirect off;
 
     # Laravel front controller
     location / {
-        try_files $uri $uri/ /index.php$is_args$args;
+        try_files $uri $uri/ /index.php?$query_string;
     }
 
     # Optional: reduce noise
@@ -22,14 +22,14 @@ server {
     location = /robots.txt  { log_not_found off; access_log off; }
 
     # Block .git
-    location ~ /.git {
+    location ~ /\.git {
         deny all;
         access_log off;
         log_not_found off;
     }
 
     # PHP handling
-    location ~* .php$ {
+    location ~ \.php$ {
         include fastcgi_params;
 
         fastcgi_pass 127.0.0.1:9000;
