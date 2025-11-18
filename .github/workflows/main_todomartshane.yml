@@ -32,18 +32,34 @@ jobs:
         run: |
           composer validate --no-check-publish
           composer install --prefer-dist --no-progress --no-dev
+
+      # 🔹 NEW: Setup Node for Vite/frontend build
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # or 18, match your local dev
+
+      # 🔹 NEW: Install node deps & build assets
+      - name: Install NPM dependencies and build
+        run: |
+          npm ci || npm install
+          npm run build
+
+      # (Optional) Clear caches (won't hurt)
+      - name: Clear Laravel caches
+        run: |
           php artisan config:clear || true
           php artisan cache:clear || true
 
-      # Optional: don’t upload node_modules/vendor if you want smaller artifact
+      # 🔹 Upload EVERYTHING needed to run the app
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: php-app
           path: |
             .
-          # Optional: exclude big/dev stuff
-          # include-hidden-files: true
+          # You can optionally exclude stuff like node_modules if desired
+          # but public/build MUST be included
 
   deploy:
     runs-on: ubuntu-latest
@@ -71,6 +87,4 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'todomartshane'
-          # if you’re NOT using any extra deployment slot, you can drop this line:
-          # slot-name: 'Production'
           package: .
